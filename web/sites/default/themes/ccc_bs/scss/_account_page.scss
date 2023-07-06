@@ -1,0 +1,44 @@
+.path-user{
+  &.user-logged-in{
+    
+    .tabs--primary{
+      display:none;
+    }
+    table#portal{
+      margin:1em auto;
+      border:1px solid #333;
+      tr{
+        td{
+          padding:1em;
+        }
+        td:first-child{
+          text-align: right;
+          margin-right:1em;
+          padding-right:1em;
+          background: #eee;
+          border:1px solid #aaa;
+        }
+      }
+    }
+    .dashboard{
+      text-align: center;
+      .cell {
+        display: inline-block;
+        width: 200px;
+
+        text-align: center;
+        background-color: #eee;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        padding-bottom:2em;
+        margin-bottom:2em;
+      }
+      .cell i {
+        font-size: 2em;
+        margin-top: 1em;
+      }
+    }
+
+  }
+}

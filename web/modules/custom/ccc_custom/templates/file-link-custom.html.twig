@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a link to a file.
+ *
+ * Available variables:
+ * - attributes: The HTML attributes for the containing element.
+ * - link: A link to the file.
+ * - file_size: The size of the file.
+ *
+ * @see template_preprocess_file_link_custom()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<span{{ attributes }}><a target="_blank" href="{{ url }}"><img src="/sites/default/files/images/download-pdf-button.png" alt="download pdf"></a></span>
+

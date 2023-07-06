@@ -1,0 +1,162 @@
+#contact-block{
+  #edit-info{
+    .panel-heading{
+      display: none;
+    }
+  }
+  background-color:#e6e6e6;
+  //border:1px solid $primary_color;
+  border:1px solid #333;
+  /*background-color:$primary_color;*/
+  h2.block-title{
+    /* color:$primary_color; */
+    color:#333;
+  }
+  .form-control{
+    /*border-color:$primary-color;*/
+    border-color: #333;
+    background-color:#fff;
+  }
+}
+#carousel{
+  background-color:$primary_color;
+}
+.webform-submission-add-form{
+  .panel-heading{
+    display:none;
+  }
+  .form-text{
+    margin-bottom:1em;
+  }
+  textarea{
+    height:80px;
+  }
+  .form-type-tel,
+  .form-type-email,
+  .form-type-textfield,
+  .form-textarea {
+    @media #{$normal} {
+      max-width:420px;
+    }
+  }
+  padding:1em 0 1em 0;
+  @media #{$normal} {
+    padding:0 0 1em 1em;
+  }
+
+  height:100%;
+  overflow: hidden;
+  .webform-client-form{
+    position: relative;
+  }
+
+
+
+  label{
+    display: inline-block;
+    font-weight: normal;
+    font-size: .65em;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family:$sans_serif_font_family;
+    &:after{
+      background:none;
+      font-family: 'Font Awesome 5 Free';
+      content: "\f621";
+      font-weight: 900;
+      margin-left:.5em;
+      color:#e14747;
+      font-size:.5em;
+    }
+  }
+  legend{
+    font-weight:normal;
+    color:#555;
+  }
+  .form-type-checkbox{
+    label{
+      display:block;
+      color:#555;
+      font-weight:normal;
+    }
+  }
+  .webform-type-checkboxes{
+    margin:1em;
+  }
+  .form-control,
+  .panel{
+    background:transparent;
+  }
+  .panel{
+    border:none;
+  }
+  .panel-body{
+    padding:0;
+    @media #{$normal} {
+      margin-right:1em;
+    }
+  }
+  .grippie{
+    display:none;
+  }
+  .webform-component-textarea{
+    padding:15px;
+  }
+
+  .panel{
+
+    @media #{$normal} {
+      margin-bottom:-10px;
+      float:left;
+      margin-bottom:20px;
+    }
+    .panel-body{
+      padding-top:0;
+    }
+  }
+
+  .form-actions{
+    clear:none;
+    float:left;
+    margin-left:0;
+    margin-top:1em;
+  }
+}
+
+#edit-processed-text{
+  max-height:400px;
+}
+
+#block-contactpageheader{
+  address{
+    float:left;
+    margin-right:2em;
+  }
+}
+
+table#phones{
+  td{
+    padding:.25em .5em;
+  }
+  td:first-child{
+    text-align: right;
+  }
+}
+
+.path-webform{
+  @media only screen and (min-width: 1200px) {
+    .main-container{
+      background: url(images/beach-logo.png) right bottom 1em no-repeat;
+      background-size: 300px;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .main-container{
+      background: url(images/beach-logo.png) center bottom 1em no-repeat;
+      background-size: 300px;
+      padding-bottom:100px;
+    }
+  }
+
+}

@@ -1,0 +1,12 @@
+ccc_bs.narrow:
+  label: narrow
+  mediaQuery: 'all and (min-width: 0) and (max-width: 850px)'
+  weight: 1
+  multipliers:
+    - 1x
+ccc_bs.wide:
+  label: wide
+  mediaQuery: 'all and (min-width: 851px)'
+  weight: 2
+  multipliers:
+    - 1x

@@ -1,0 +1,39 @@
+.path-resort-details{
+  .views-element-container{
+    h3{
+      font-size: 2em;
+      background: $primary_color;
+      color: #fff;
+
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      
+    }
+   h2{
+     font-size:1.25em;
+     font-weight: bold;
+   }
+    .view-photos{
+      text-align: center;
+      .views-row{
+
+        img{
+          display:inline-block;
+          width:235px;
+          @media #{$tablet} {
+            width:140px;
+          }
+          @media #{$normal} {
+            width:180px;
+          }
+          @media #{$wide} {
+            width: auto;
+          }
+
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ *
+ * @ingroup themeable
+ */
+#}
+<article{{ attributes }}>
+    {% if content %}
+        {{- content -}}
+    {% endif %}
+    <br />
+    <table id="portal">
+        <tr><td><strong>Email</strong>:</td><td>{{ user.mail.value }} [<a href="/user/{{ uid }}/edit">edit</a>]</td></tr>
+        <tr><td><strong>Password</strong></td><td>********* [<a href="/user/{{ uid }}/edit">change</a>]</td></tr>
+    </table>
+    <br />
+
+    <div class="dashboard">
+
+
+        <a href="/user" title="View Account" data-drupal-link-system-path="user">
+            <div class="cell">
+                <i class="fas fa-user fa-fw"></i><p>View Account</p>
+            </div>
+        </a>
+
+        <a href="/user/{{ uid }}/edit" title="Edit Account" data-drupal-link-system-path="user/{{ uid }}/edit">
+            <div class="cell">
+                <i class="fas fa-user-edit fa-fw"></i><p>Edit Account</p>
+            </div>
+        </a>
+
+        <a href="/user/logout" title="Log Out" data-drupal-link-system-path="user/logout">
+            <div class="cell">
+                <i class="fas fa-sign-out-alt fa-fw"></i><p>Log Out</p>
+            </div>
+        </a>
+    </div>
+</article>

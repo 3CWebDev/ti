@@ -1,0 +1,98 @@
+/* Calendar */
+
+#calback {
+  background: #fff url('/sites/all/assets/images/calWaiting.gif') no-repeat 50% 100px;
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+#calendar {
+  width: 100%;
+  height: 100%;
+  border-top:1px solid #fff;
+  border-left:1px solid #fff;
+  border-right:1px solid #fff;
+
+  p.poplink img {margin-right:14px;vertical-align:middle;}
+  p.poplink {padding:.5em 0 0 1em;}
+
+  td{
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif ;
+    padding: 3px;
+    color:#fff;
+    border:1px solid #ccc;
+    background:#083D5D;
+    font-size:.9em;
+  }
+
+  .cal {
+    background: #000;
+    width: 100%;
+  }
+
+  .calhead td {
+    font-weight: bold;
+    color: #fff;
+    font-size: 22px;
+    border:0;
+  }
+
+  .calhead img {border: none;}
+
+  .dayhead td {
+    height: 25px;
+    background: #ACE1F1;
+  }
+
+  .dayhead td {
+    text-align: center;
+    color: #000;
+  }
+
+
+  .dayrow td,.oddrow td {
+    color: #000;
+    text-align:center
+  }
+
+  .day {float: right;}
+
+
+  .dayrow td.week {background: #fff;color:#083D5D;font-weight:bold;}
+  .oddrow td.week {background: #eee;color:#083D5D;font-weight:bold;}
+
+  .dayrow td{
+    background: #FFF;
+    height: 1.5em;
+  }
+  .oddrow td{
+    background: #eee;
+    height: 1.5em;
+  }
+
+
+  .dayover td.week,
+  .dayover td {background-color:#fdfabd;;}
+
+  .dayout {background-color:#fff;}
+
+}
+
+.ts-pop{
+  margin-bottom:.5em;
+  margin-right:.5em;
+}
+@media only screen and (min-width: 600px) {
+  .ts-instruct{
+    width:60%;
+    float:left;
+    margin-left:1em;
+  }
+  .ts-pop{
+    width:35%;
+    float:right;
+    text-align: right;
+  }
+}
+
+

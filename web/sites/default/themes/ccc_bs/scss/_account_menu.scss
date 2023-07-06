@@ -1,0 +1,26 @@
+#block-customblocksaccountlinks{
+
+  .horizontal-menu > li ul {
+    width:17em;
+  }
+  ul.sf-menu {
+    ul{
+      background:#fff;
+      border:1px solid #ccc;
+      i{
+        color:$primary_color;
+        margin-right:.5em;
+      }
+      li{
+        a{
+          &:hover{
+            background: $primary_color;
+            i{
+              color:#000;
+            }
+          }
+        }
+      }
+    }
+  }
+}

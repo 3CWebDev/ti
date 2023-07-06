@@ -1,0 +1,90 @@
+<?php
+
+use Drupal\image\Entity\ImageStyle;
+
+function ccc_bs_preprocess_page(&$variables) {
+
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+  
+  $variables['facebook'] = theme_get_setting('facebook');
+  $variables['twitter'] = theme_get_setting('twitter');
+  $variables['youtube'] = theme_get_setting('youtube');
+  $variables['googleplus'] = theme_get_setting('googleplus');
+  $variables['linkedin'] = theme_get_setting('linkedin');
+  $variables['pinterest'] = theme_get_setting('pinterest');
+  $variables['instagram'] = theme_get_setting('instagram');
+  $variables['tripadvisor'] = theme_get_setting('tripadvisor');
+}
+
+function ccc_custom_preprocess_page_title(&$variables) {
+
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  if ($route_name == 'user.login'){
+    $variables['title'] = 'Login to your Existing Account';
+  }
+
+  if ($route_name == 'entity.user.canonical'){
+    $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    if (empty($user->cust_name)){
+      $variables['title'] = 'Admin Account';
+    }else{
+      $variables['title'] = 'Your Account | '  . $user->cust_name;
+    }
+  }
+}
+
+function ccc_bs_preprocess_html(&$variables) {
+  // Add node id to the body class.
+  //$variables['page_title']['title'] = 'something';
+
+  $path = \Drupal::request()->getpathInfo();
+  $arg  = explode('/',$path);
+  
+  if (isset($arg[3]) && $arg[3] == "orders"){
+    $variables['order'] = TRUE;
+  }
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if($node) {
+    $variables['attributes']['class'][] = 'node-' . $node->id();
+  }
+  if (\Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
+    // load the term entity and get the data from there
+    $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+    //$variables['term_id'] = $term->id();
+    $variables['vocabulary_id'] = $term->bundle();
+  }
+}
+
+
+function ccc_bs_preprocess_user(&$variables) {
+  $uid = \Drupal::currentUser()->id();
+  $variables['uid'] = $uid;
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  
+  if (\Drupal\user\Entity\User::load(\Drupal::currentUser()->id())->hasRole('customer')){
+    $variables['customer'] = TRUE;
+
+    $portal = views_embed_view('customer_portal', 'block_1', $uid);
+    $variables['portal'] = drupal_render($portal);
+
+  }else{
+    $variables['customer'] = FALSE;
+  }
+
+  if (\Drupal\user\Entity\User::load(\Drupal::currentUser()->id())->hasRole('site_admin')){
+    $variables['admin'] = TRUE;
+  }else{
+    $variables['admin'] = FALSE;
+  }
+
+  if ($variables['customer'] ){
+    $response =  new RedirectResponse('/owners');
+    $response->send();
+  }
+
+}
+

@@ -1,0 +1,188 @@
+.path-beach-resorts {
+  .page-header {
+    display: none;
+  }
+  .view-header{
+    margin:1.25em 0;
+  }
+}
+#video-container{
+  overflow: hidden;
+  .overlay {
+    @media #{$normal} {
+      display:none;
+    }
+
+    background:#fff;
+    .cap{
+      color:#fff;
+      background: #333;
+      @media #{$normal} {
+        background:transparent;
+      }
+      a{
+        font-size:.75em;
+      }
+
+    }
+    @media #{$normal} {
+      position:absolute;
+      left:0; right:0;
+      top:25%;
+      margin:auto;
+      padding-bottom:1em;
+      max-width:100%;
+      max-height:100%;
+      overflow:auto;
+      z-index:1;
+      background:rgba(0,0,0,.75);
+      width:75%;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+
+    h2{
+      color:#333;
+
+      @media #{$normal}{
+        color:#fff;
+      }
+
+      font-size: 2.5em;
+      letter-spacing: 4px;
+    }
+    h3{
+      color:#333;
+      @media #{$normal}{
+        color:#fff;
+      }
+    }
+    p{
+      color:#333;
+
+      @media #{$normal}{
+        color:#fff;
+      }
+      margin:2em 0;
+    }
+    p.cap{
+      letter-spacing: 3px;
+    }
+    /*this to solve "the content will not be cut when the window is smaller than the content": */
+
+
+    .tabs{
+      background:#fff;
+    }
+    color:#fff;
+
+  }
+  position: relative;
+
+  video{
+    overflow: hidden;
+    width: 100% !important;
+    height: auto;
+    position:relative;
+    z-index:0;
+    @supports (object-fit: cover) {
+      height: 600px !important;
+      object-fit: cover;
+    }
+
+
+  }
+
+}
+
+
+/* effect-shine */
+a.effect-shine:hover {
+  -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+  -webkit-mask-size: 200%;
+  animation: shine 2s infinite;
+}
+
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+#block-videooverlay{
+
+  z-index: 10;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-55%);
+  margin-left:1em;
+
+  h1{
+    color:#fff;
+    font-size:1.25em;
+    text-shadow: 2px 3px 3px rgba(0,0,0,0.5);
+  }
+  h2{
+    color:#fff;
+    font-size:1.125em;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  }
+  h3{
+    font-size: 1em;
+    color: #000;
+    text-shadow: 1px 1px 0 #777;
+    margin-left: .25em;
+    font-weight: bold;
+    display: none;
+  }
+  button{
+    display: none;
+    opacity: .75;
+    i{
+      color:$secondary_color;
+    }
+  }
+  @media #{$tablet} {
+    button{
+      border:1px solid $primary_color;
+      display:block;
+      &:hover{
+        opacity: 1;
+      }
+    }
+    margin-left:2em;
+    display:block;
+    h1{
+      font-size:3em;
+    }
+    h2{
+      font-size:1.75em;
+    }
+    h3{
+      font-size: 1em;
+    }
+  }
+
+  @media #{$normal} {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-65%);
+    margin-left:4em;
+    h1{
+      font-size:4em;
+    }
+    h2{
+      font-size:2.5em;
+    }
+    h3{
+      font-size: 1.3em;
+    }
+  }
+
+
+}

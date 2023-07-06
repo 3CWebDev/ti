@@ -1,0 +1,96 @@
+#block-calltoactionsblocksecond{
+  background:url(images/beach-bg.jpg);
+  .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+    padding-left:1px;
+    padding-right:1px;
+  }
+  #resorts-grid{
+    margin:1em;
+  }
+  span.ol-top {
+    position: relative;
+    opacity: 1;
+    font-size: 1.5em;
+    @media #{$tablet} {
+      font-size: 2.25vw;
+    }
+    display:block;
+    color:#333;
+    top:1vw;
+    text-align: center;
+  }
+  h2{
+    text-align: center;
+    background:$secondary_color;
+    color:#fff;
+    padding:.5em 0;
+    margin-bottom:1em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    -webkit-box-shadow: 1px 5px 10px 0px rgba(0,0,0,0.53);
+    -moz-box-shadow: 1px 5px 10px 0px rgba(0,0,0,0.53);
+    box-shadow: 1px 5px 10px 0px rgba(0,0,0,0.53);
+  }
+  #r1{
+    background:url(images/treasure-island-beach-club.jpg) center no-repeat;
+    background-size: contain;
+  }
+  #r2{
+    background:url(images/ti-beach-club-photos.jpg) center no-repeat;
+    background-size: contain;
+  }
+  #r3{
+    background:url(images/video-tour.jpg) center no-repeat;
+    background-size: contain;
+  }
+  #r4{
+    background:url(images/things-to-do.jpg) center no-repeat;
+    background-size: contain;
+  }
+  #r5{
+    background:url(images/web-cam.jpg) center no-repeat;
+    background-size: contain;
+  }
+  #r6{
+    background:url(images/map.jpg) center no-repeat;
+    background-size: contain;
+  }
+  .resort{
+    /*width: 80%;*/
+    height: 0;
+    position: relative;
+    padding-top: 66.64%;
+    margin:1em;
+    /* https://stackoverflow.com/questions/600743/how-to-get-div-height-to-auto-adjust-to-background-size*/
+    a{
+      position:absolute; top:0; bottom:0; left:0; right:0;
+      color:#333;
+      text-align: center;
+      p.ol{
+        position: relative;
+        display:block;
+        top: 0;
+        opacity: 0;
+        transition: all 1s;
+        font-size:1.25em;
+      }
+      &:hover{
+
+        p.ol{
+          opacity: 1;
+          top: 50%;
+          transform: translateY(-50%);
+          color:#333;
+          background:rgba(255,255,255,.75);
+          padding:.25em 0;
+        }
+
+
+      }
+    }
+
+  }
+
+}

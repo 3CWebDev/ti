@@ -1,0 +1,57 @@
+{#
+/**
+* @file
+*
+* Default product template.
+*
+* Available variables:
+* - attributes: HTML attributes for the wrapper.
+* - product: The rendered product fields.
+*   Use 'product' to print them all, or print a subset such as
+*   'product.title'. Use the following code to exclude the
+*   printing of a given field:
+*   @code
+*   {{ product|without('title') }}
+*   @endcode
+* - product_entity: The product entity.
+* - product_url: The product URL.
+*
+* @ingroup themeable
+*/
+#}
+<article{{ attributes }}>
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6 product-image">
+            {{ product.field_image }}
+        </div>
+
+        <div class="col-md-4 col-sm-6 product-details">
+            {{- product|without('field_image', 'variation_attributes','variations','variation_field_description', 'variation_price', 'variation_field_free_shipping_') -}}
+            <div class="watch-brand-logo"><img src="{{ brand_logo }}" /></div>
+        </div>
+
+        <div class="col-md-4 col-sm-12 product-cart">
+            {% if free_shipping %}
+                <div class="free-shipping">
+                    <img class="img-responsive" src="/sites/default/files/images/free-shipping.jpg" alt="Free Shipping" />
+                </div>
+            {% endif %}
+
+            <div class="cart">
+                {% if not hide_purchase and online_purchase != 'no' %}
+                    {{ product.variation_price }}
+                    {{ product.variations }}
+                {% else %}
+                    <p>Please <a href="/contact">contact us</a> for price and availability.</p>
+                {% endif %}
+            </div>
+
+            <br />
+
+            {{ product.variation_field_description }}
+        </div>
+    </div>
+
+
+</article>

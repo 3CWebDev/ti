@@ -1,0 +1,166 @@
+.footer_top{
+
+  #block-footertop{
+    text-align: center;
+    img{
+      height:auto;
+      width:100%;
+      max-width:200px;
+      @media #{$tablet} {
+        height:initial;
+        width: initial;
+      }
+      margin-bottom:1em;
+
+    }
+  }
+  form{
+    margin-bottom:3em;
+    .mailchimp-newsletter-mergefields,
+    .form-item,
+    .form-actions{
+      display:inline-block;
+    }
+    .form-actions{
+      button{
+        margin-left:-1em;
+        height:3em;
+        color:#fff;
+        background-color:#46321b;
+        border:none;
+      }
+    }
+    label{
+      display:none;
+    }
+    input{
+      display:inline-block;
+      border-radius: 7px;
+      height: 3em;
+      padding: 0 24px;
+      color: #808080;
+      border: none;
+      background: #f7f7f7;
+      width:auto;
+      border: 1px solid #46321b;
+
+     &#submit{
+       color:#fff;
+        background:green;
+       &:hover{
+         background:#333;
+       }
+      }
+    }
+  }
+
+  border-top:1px solid #111;
+  padding: 3rem 0;
+  background: rgba(27, 117, 188, 0.85);
+  text-align: center;
+  h2.block-title,
+  p{
+    font-size:1.25em;
+    color:#111;
+    i{
+      color:#eef107;
+    }
+    a{
+      color:#111;
+    }
+    span{
+      color:#194790;
+    }
+  }
+}
+footer.footer{
+  background:url(images/footer-bg.jpg)  no-repeat #194790;
+  background-size: cover;
+}
+.footer{
+
+  color:#333;
+  font-weight: bold;
+  padding: 35px 0 36px 0;
+  a{
+    color:#333;
+  }
+  #footer-menu{
+
+    .responsive-menu-block-wrapper{
+      display:block !important;
+    }
+
+    position: relative;
+    top: -5rem;
+    text-align: center;
+    background: #fff;
+    padding: .5rem 1rem;
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 5rem;
+    ul.horizontal-menu{
+      margin:0;
+      li{
+        font-size:1.5vw;
+      }
+    }
+  }
+
+  #block-headercontactinfo-2{
+
+    @media #{$tablet} {
+      position: absolute;
+      top:-1em;
+      right:1em;
+    }
+  }
+  h2{
+    font-size:1.125em;
+  }
+
+  #footer-wrapper{
+    p{
+      line-height: 1.75;
+    }
+    a.footer-link{
+      background-color: #fff;
+      padding: .25em 1em;
+      border-radius: 5em;
+      border: 1px solid #000;
+      white-space: nowrap;
+    }
+    //background: url(images/logo-footer.png) center bottom no-repeat;
+    padding-bottom:100px;
+    @media #{$tablet} {
+      padding-bottom:20px;
+      background-position: right bottom;
+    }
+
+
+  }
+  .copyright{
+    text-align: center;
+  }
+}
+.region-footer-menu{
+  ul{
+    margin:0;
+    padding:0;
+    li{
+      margin:0;
+      padding:0;
+      display:inline-block;
+      a{
+        color:#333;
+      }
+    }
+  }
+}
+.region-footer{
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+  text-align: center;
+}

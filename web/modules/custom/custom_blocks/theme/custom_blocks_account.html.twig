@@ -1,0 +1,34 @@
+<ul class="sf-menu horizontal-menu sf-js-enabled sf-arrows sf-menu">
+    <li class="menu-item menu-item--expanded"><a class="sf-with-ul" href="#"><i class="fas fa-user-circle"></i> ACCOUNT</a>
+    <ul class="menu sub-nav">
+
+        {% if not logged_in %}
+
+            <li class="menu-item" style="padding:1em;">
+                <a href="/owner/login" class="btn btn-primary">Owner Login</a>
+            </li>
+
+        {% else %}
+            {% if user.hasPermission('view user information') %}
+                <li class="menu-item">
+                    <a href="/owners" title="Owner Documents" data-drupal-link-system-path="owner"><i class="fas fa-file-alt fa-fw"></i></i> Owner Documents</a>
+                    <a href="/node/add/owner_doc" title="Create Owner Document" data-drupal-link-system-path="node/add/owner_doc fa-fw"><i class="fas fa-user fa-fw"></i> Create New Document</a>
+                    <a href="/user" title="View Account" data-drupal-link-system-path="user"><i class="fas fa-user fa-fw fa-fw"></i> View Account</a>
+                    <a href="/user/{{ uid }}/edit" title="Edit Account" data-drupal-link-system-path="user/{{ uid }}/edit"><i class="fas fa-user-edit fa-fw"></i> Edit Account</a>
+                    <a href="/user/logout" title="Log Out" data-drupal-link-system-path="user/logout"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
+                </li>
+            {% else %}
+                <li class="menu-item">
+                    <a href="/owners" title="Owner Documents" data-drupal-link-system-path="user"><i class="fas fa-file-alt fa-fw"></i> Owner Documents</a>
+                    <a href="/user/logout" title="Log Out" data-drupal-link-system-path="user/logout"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
+                </li>
+            {% endif %}
+
+        {% endif %}
+
+
+
+    </ul>
+    </li>
+</ul>
+

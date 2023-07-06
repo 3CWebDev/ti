@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Template for orders in the 'user' view mode.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - order: The rendered order fields.
+ *   Use 'order' to print them all, or print a subset such as
+ *   'order.order_number'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ order|without('order_number') }}
+ *   @endcode
+ * - order_entity: The order entity.
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes }}>
+
+        <div class="customer-information">
+
+            {{ order.mail }}
+            <br />
+            <div class="row">
+            {% if order.shipping_information %}
+                <div class="col-md-6">
+                    <div class="customer-information__shipping">
+                        <strong><div class="field__label">{{ 'Shipping information'|t }}</div></strong>
+                        {{ order.shipping_information }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if order.billing_information %}
+                <div class="col-md-6">
+                    <div class="customer-billing">
+                        <strong><div class="field__label">{{ 'Billing information'|t }}</div></strong>
+                        {{ order.billing_information }}
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    <div class="order-information">
+        <br />
+        {{ order.placed }}
+        {{ order.completed }}
+        {{ order.state }}
+        <br />
+        <hr />
+        {{ order.order_items }}
+        {{ order.total_price }}
+    </div>
+</div>

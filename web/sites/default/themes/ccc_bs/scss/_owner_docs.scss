@@ -1,0 +1,46 @@
+.view-owner-documents{
+  article{
+    border:1px solid #ccc;
+    padding:.25em 1em;
+    margin-bottom:1em;
+    h2{
+      font-size:1em;
+      font-weight:bold;
+    }
+    .field--name-field-type{
+      .field--label{
+        font-weight: normal;
+      }
+    }
+    &.is-sticky{
+      .author{
+        &:after{
+          font-family: 'Font Awesome 5 Free';
+          content: "\f08d";
+          font-weight: 900;
+          float: right;
+          position: absolute;
+          top:.25em;
+          right:.5em;
+        }
+      }
+    }
+    .field--name-field-photo-s-{
+      .field--item{
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+.page-node-type-owner-doc{
+  article.owner-doc{
+    .field--type-text-with-summary{
+      margin:1em 0;
+    }
+    .field--label{
+      font-weight: normal;
+    }
+  }
+}

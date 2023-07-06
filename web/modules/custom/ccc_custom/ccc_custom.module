@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * @file
+ * Contains ccc_custom.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ccc_custom_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ccc_custom module.
+    case 'help.page.ccc_custom':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom code (3C Web Services)') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_menu_alter().
+ * Change built-in Drupal menu account links to all uppercase
+ */
+function ccc_custom_link_alter(&$variables) {
+  /**
+   * The URL of the link.
+   *
+   * @var Url
+   */
+  $url = $variables['url'];
+
+  // Return early where possible.
+  if ($url->isExternal()) {
+    return;
+  }else{
+    if ($url->isRouted() && $route_name = $url->getRouteName()){
+      if ($route_name){
+        if ($route_name == 'user.logout') {
+          $variables['text'] = 'LOG OUT';
+        }
+        if ($route_name == 'user.page') {
+          $variables['text'] = 'MY ACCOUNT';
+        }
+        if ($route_name == 'user.login') {
+          $variables['text'] = 'LOG IN';
+        }
+      }
+    }
+
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ccc_custom_theme() {
+  return [
+    // From file.module.
+    'file_link_custom' => [
+      'variables' => ['url' => NULL, 'file' => NULL, 'description' => NULL, 'attributes' => []],
+    ],
+
+  ];
+}
+
+function ccc_custom_form_user_form_alter(&$form, &$form_state) {
+  $account = \Drupal::service('current_route_match')->getParameter('user');
+
+  // If this is not the Superadmin's edit page
+  if ( !empty($account) && ($account->id() != 1) ) {
+
+    // Turn off Current password field's validation
+    $form_state->set('user_pass_reset', 1);
+
+    // Hide the Current password fields
+    $form['account']['current_pass']['#access'] = FALSE;
+  }
+}

@@ -1,0 +1,5 @@
+name: 3C Web Custom Blocks
+description: 'Provides custom blocks.'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9

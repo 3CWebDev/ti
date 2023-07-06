@@ -1,0 +1,263 @@
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+ {% if page.top_bar %}
+     {% block top_bar %}
+         {{ page.top_bar }}
+     {% endblock %}
+ {% endif %}
+    {% block header %}
+        <div class="col-md-12" role="heading" id="heading">
+            <div class="{{ container }}">
+
+                {% if page.branding %}
+                    {% block branding %}
+                        {{ page.branding }}
+                    {% endblock %}
+                {% endif %}
+
+                {% if page.phone %}
+                    {% block phone %}
+                        {{ page.phone }}
+                    {% endblock %}
+                {% endif %}
+
+                {% if page.search %}
+                    {% block search %}
+                        {{ page.search }}
+                    {% endblock %}
+                {% endif %}
+
+                {% if page.account %}
+                    {% block account %}
+                        {{ page.account }}
+                    {% endblock %}
+                {% endif %}
+
+                <div class="region social">
+                    {%  if facebook %}<a href="{{ facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                    {%  if twitter %}<a href="{{ twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>{% endif %}
+                    {%  if youtube %}<a href="{{ youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>{% endif %}
+                    {%  if vimeo %}<a href="{{ vimeo }}" target="_blank"><i class="fab fa-vimeo-v"></i></a>{% endif %}
+                    {%  if linkedin %}<a href="{{ linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>{% endif %}
+                    {%  if pinterest %}<a href="{{ pinterest }}" target="_blank"><i class="fab fa-pinterest"></i></a>{% endif %}
+                    {%  if instagram %}<a href="{{ instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}
+                    {%  if tripadvisor %}<a href="{{ tripadvisor }}" target="_blank"><i class="fab fa-tripadvisor"></i></a>{% endif %}
+                </div>
+                {{ page.header }}
+            </div>
+        </div>
+    {% endblock %}
+
+
+{# Navbar #}
+{% if page.navigation or page.navigation_collapsible %}
+    {% block navbar %}
+        {%
+            set navbar_classes = [
+            'navbar',
+            theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+            theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
+        ]
+        %}
+        <div id="header-wrapper">
+            <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
+                {% if not navbar_attributes.hasClass(container) %}
+                <div class="{{ container }}">
+                    {% endif %}
+                    <div class="navbar-header">
+                        {{ page.navigation }}
+                        {# .btn-navbar is used as the toggle for collapsed navbar content #}
+                        {% if page.navigation_collapsible %}
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                                <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        {% endif %}
+                    </div>
+
+                    {# Navigation (collapsible) #}
+                    {% if page.navigation_collapsible %}
+                        <div id="navbar-collapse" class="navbar-collapse collapse">
+                            {{ page.navigation_collapsible }}
+                        </div>
+                    {% endif %}
+                    {% if not navbar_attributes.hasClass(container) %}
+                </div>
+                {% endif %}
+            </header>
+        </div><!-- /header-wrapper -->
+    {% endblock %}
+{% endif %}
+
+{% if page.hero %}
+   {% block hero %}
+       {{ page.hero }}
+   {% endblock %}
+{% endif %}
+
+ {% if page.breadcrumbs %}
+     {% block breadcrumbs %}
+         <div class="breadcrumbs-wrapper">
+             <div class="{{ container }}">
+                {{ page.breadcrumbs }}
+             </div>
+         </div>
+     {% endblock %}
+ {% endif %}
+
+
+{% if is_front %}
+    <div id="video">
+        <div id="video-container">
+            {% if page.overlay %}
+                {% block overlay %}
+                    {{ page.overlay }}
+                {% endblock %}
+            {% endif %}
+            <video playsinline loop muted autoplay class="fullscreen-bg__video" poster="/sites/default/files/video/ti-still.jpg">
+                <source src="/sites/tibeachclub.com/files/video/video.mp4" type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' codecs="H.264/MPEG-4">
+                <source src="/sites/tibeachclub.com/files/video/video.webm" type='video/webm' >
+                <source src="/sites/tibeachclub.com/files/video/video.ogv" type="video/ogg">
+
+
+            </video>
+            {% if page.video %}
+                {% block video %}
+                    {{ page.video }}
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+{# Main #}
+
+{% block main %}
+    <div role="main" class="main-container {{ container }} js-quickedit-main-content">
+        <div class="row">
+
+            {# Sidebar First #}
+            {% if page.sidebar_first %}
+                {% block sidebar_first %}
+                    <aside class="col-md-4" role="complementary">
+                        {{ page.sidebar_first }}
+                    </aside>
+                {% endblock %}
+            {% endif %}
+
+            {# Content #}
+            {%
+                set content_classes = [
+                page.sidebar_first and page.sidebar_second ? 'col-md-6',
+                page.sidebar_first and page.sidebar_second is empty ? 'col-md-8',
+                page.sidebar_second and page.sidebar_first is empty ? 'col-md-9',
+                page.sidebar_first is empty and page.sidebar_second is empty ? 'col-md-12'
+            ]
+            %}
+            <section{{ content_attributes.addClass(content_classes) }} id="main-content-container">
+
+                {# Highlighted #}
+                {% if page.highlighted %}
+                    {% block highlighted %}
+                        <div class="highlighted">{{ page.highlighted }}</div>
+                    {% endblock %}
+                {% endif %}
+
+                {# Help #}
+                {% if page.help %}
+                    {% block help %}
+                        {{ page.help }}
+                    {% endblock %}
+                {% endif %}
+
+                {# Content #}
+
+                    {% block content %}
+                        <a id="main-content"></a>
+                        {{ page.content }}
+                    {% endblock %}
+
+            </section>
+
+            {# Sidebar Second #}
+            {% if page.sidebar_second %}
+                {% block sidebar_second %}
+                    <aside class="col-md-3" role="complementary">
+                        {{ page.sidebar_second }}
+                    </aside>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+<div id="carousel">
+    {% if page.carousel %}
+        <div class="{{ container }}">
+        {% block carousel %}
+            {{ page.carousel }}
+        {% endblock %}
+        </div>
+    {% endif %}
+</div>
+
+{% if page.cta %}
+    {% block cta %}
+        {{ page.cta }}
+    {% endblock %}
+{% endif %}
+
+{% if page.slider %}
+    {% block slider %}
+        {{ page.slider }}
+    {% endblock %}
+{% endif %}
+
+{% if page.footer_top %}
+    {% block footer_top %}
+        <footer class="footer_top" role="contentinfo">
+            <div id="footer-top-wrapper" class="{{ container }}">
+                {{ page.footer_top }}
+                <br />
+                <div class="social">
+                    {%  if facebook %}<a href="{{ facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                    {%  if twitter %}<a href="{{ twitter }}" target="_blank"><i class="fab fa-twitter"></i></a>{% endif %}
+                    {%  if youtube %}<a href="{{ youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>{% endif %}
+                    {%  if vimeo %}<a href="{{ vimeo }}" target="_blank"><i class="fab fa-vimeo-v"></i></a>{% endif %}
+                    {%  if linkedin %}<a href="{{ linkedin }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>{% endif %}
+                    {%  if pinterest %}<a href="{{ pinterest }}" target="_blank"><i class="fab fa-pinterest"></i></a>{% endif %}
+                    {%  if instagram %}<a href="{{ instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}
+                    {%  if tripadvisor %}<a href="{{ tripadvisor }}" target="_blank"><i class="fab fa-tripadvisor"></i></a>{% endif %}
+                </div>
+            </div>
+
+        </footer>
+    {% endblock %}
+{% endif %}
+
+{% if page.footer %}
+
+    {% block footer %}
+        <footer class="footer" role="contentinfo">
+
+            {% if page.footer_menu %}
+                {% block footer_menu %}
+                    <div id="footer-menu">
+                        <div id="footer-menu-wrapper"">
+                            {{ page.footer_menu }}
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endif %}
+            <div id="footer-wrapper" class="{{ container }}">
+
+                {{ page.footer }}
+                {% set currentYear = "now"|date("Y") %}
+                <br /><p class="copyright">&copy; Copyright {{ currentYear }} <span> | {{ site_name }}<br />
+
+                        Site by <a target="_blank" href="https://3cwebservices.com/">3C Web Services</a></span></p>
+            </div>
+        </footer>
+    {% endblock %}
+{% endif %}

@@ -1,0 +1,67 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+function custom_blocks_theme() {
+
+  $path = drupal_get_path('module', 'custom_blocks');
+  return array(
+    'custom_blocks_ctas_first' => array(
+      'template' => 'custom_blocks_ctas_first',
+      'path' => '/' . $path . '/theme',
+      'variables' => array(
+        'destination' => NULL,
+      ),
+    ),
+    'custom_blocks_ctas_second' => array(
+      'template' => 'custom_blocks_ctas_second',
+      'path' => '/' . $path . '/theme',
+      'variables' => array(
+        'destination' => NULL,
+      ),
+    ),
+    'custom_blocks_search' => array(
+      'template' => 'custom_blocks_search',
+      'path' => '/' . $path . '/theme',
+      'variables' => array(
+        'destination' => NULL,
+      ),
+    ),
+    'custom_blocks_account' => array(
+      'template' => 'custom_blocks_account',
+      'path' => '/' . $path . '/theme',
+      'variables' => array(
+        'destination' => NULL,
+        'uid' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function custom_blocks_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the easydrupal_breadcrumb module.
+    case 'help.page.easydrupal_breadcrumb':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Setting breadcrumbs for custom content types') . '</p>';
+      return $output;
+
+
+    default:
+  }
+}
+
+function custom_blocks_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+  if ($form_id == 'mailchimp_signup_subscribe_block_newsletter_signup_form'){
+
+    $form['mergevars']['EMAIL']['#attributes']['placeholder'] = t('enter email');
+    $form['mergevars']['FNAME']['#attributes']['placeholder'] = t('enter first name');
+    $form['mergevars']['LNAME']['#attributes']['placeholder'] = t('enter last name');
+    $form['actions']['submit']['#value'] = 'Subscribe';
+  }
+
+}

@@ -1,0 +1,5 @@
+services:
+ custom_blocks.breadcrumb:
+   class: Drupal\custom_blocks\Breadcrumb\CustomBlocksBreadcrumbBuilder
+   tags:
+    - { name: breadcrumb_builder, priority: 100 }

@@ -1,0 +1,55 @@
+.path-user{
+  .page-header{
+    color:$primary_color;
+    text-align: center;
+  }
+  &.order{
+    .page-header{
+      text-align: left;
+    }
+    .views-field-total-price__number{
+      text-align: right;
+    }
+    .order-total-line{
+      span:first-child{
+        margin-right:1em;
+      }
+    }
+  }
+}
+#user-register-form,
+#user-login-form{
+  .form-required::after{
+    margin-left:.5em;
+  }
+  position: relative;
+  .forgot-password{
+    position: absolute;
+    bottom:1em;
+    right:1em;
+    top: auto;
+  }
+  .form-type-password{
+    margin-bottom:1.5em !important;
+  }
+  max-width: 420px;
+  @media #{$tablet} {
+    max-width: 520px;
+  }
+
+  margin:auto;
+  label{
+    font-weight:normal;
+  }
+  .forgot-password{
+    float:right;
+  }
+  .actions-suffix{
+    display: none;
+  }
+}
+#user-register-form{
+  label{
+    font-weight: normal;
+  }
+}

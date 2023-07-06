@@ -1,0 +1,25 @@
+#heading{
+  .social{
+    margin-top:.5em;
+    text-align: center;
+    display:none;
+    @media #{$normal} {
+      display:block;
+
+    }
+  }
+}
+
+.social a{
+  color:#fff;
+  font-size:1rem !important;
+}
+
+.social i {
+  background: #333;
+  font-size: 3rem !important;
+  height: 50px;
+  width: 50px;
+  padding: .9rem;
+  text-align: center;
+}

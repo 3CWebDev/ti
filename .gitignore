@@ -1,0 +1,9 @@
+.idea
+core
+vendor
+private
+web/modules/contrib/*
+web/themes/contrib/*
+web/sites/default/settings.*
+web/sites/default/files/*
+tmp*
