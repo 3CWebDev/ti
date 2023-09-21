@@ -18,6 +18,8 @@ class ProfileSubscriber implements EventSubscriberInterface {
    * {@inheritdoc}
    */
   public function checkForRedirection(GetResponseEvent $event) {
+
+
     //entity.user.canonical
     $route_name = \Drupal::routeMatch()->getRouteName();
 
@@ -25,7 +27,8 @@ class ProfileSubscriber implements EventSubscriberInterface {
     $userID = $user->id();
     $roles = $user->getRoles();
 
-    if (($route_name== 'user.page' || $route_name == 'entity.user.canonical') && $userID !== '1' && !in_array('administrator', $roles)){
+    if (($route_name == 'user.page' || $route_name == 'entity.user.canonical') && ($userID !== '1' && !in_array('administrator', $roles))){
+
       $response =  new RedirectResponse('/owners');
       $response->send();
       return;

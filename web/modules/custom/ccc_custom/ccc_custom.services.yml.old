@@ -1,0 +1,5 @@
+services:
+  ccc_custom.event_subscriber:
+    class: Drupal\ccc_custom\EventSubscriber\ProfileSubscriber
+    tags:
+      - {name: event_subscriber }

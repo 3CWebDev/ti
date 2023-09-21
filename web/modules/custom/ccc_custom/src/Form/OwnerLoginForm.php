@@ -137,18 +137,13 @@ class OwnerLoginForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $account = $this->userStorage->load($form_state->get('uid'));
 
-    // A destination was set, probably on an exception controller,
-    if (!$this->getRequest()->request->has('destination')) {
-      $form_state->setRedirect(
-        'entity.user.canonical',
-        ['user' => $account->id()]
-      );
-    }
-    else {
-      $this->getRequest()->query->set('destination', $this->getRequest()->request->get('destination'));
-    }
+
+
+
 
     user_login_finalize($account);
+
+
   }
 
   /**
