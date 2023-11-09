@@ -38,7 +38,7 @@ class CustomBlocksBreadCrumbBuilder implements BreadcrumbBuilderInterface {
     // Breadcrumbs set up (cache settings are so important!).
     //$breadcrumb->addCacheTags(["view_id:{$parameters['view_id']}"]);
 
-    $breadcrumb = new \Drupal\Core\Breadcrumb\Breadcrumb();
+    $breadcrumb = new Breadcrumb();
     $breadcrumb->addCacheContexts(["url"]);
 
 

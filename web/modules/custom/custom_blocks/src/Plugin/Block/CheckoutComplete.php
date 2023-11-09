@@ -2,6 +2,7 @@
 
 namespace Drupal\custom_blocks\Plugin\Block;
 
+use Drupal\commerce_order\Entity\Order;
 use Drupal\Core\Block\BlockBase;
 
 /**
@@ -29,7 +30,7 @@ class CheckoutComplete extends BlockBase {
 
     if (isset($arg[2]) && is_numeric($arg[2])) {
 
-      $order = \Drupal\commerce_order\Entity\Order::load($arg[2]);
+      $order = Order::load($arg[2]);
 
       if ($order->getCustomerId() === \Drupal::currentUser()->id()){
         $renderable = array(

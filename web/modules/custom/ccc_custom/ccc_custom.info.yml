@@ -1,6 +1,5 @@
 name: 3C Custom Code
 type: module
 description: Custom code (3C Web Services)
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 package: Custom

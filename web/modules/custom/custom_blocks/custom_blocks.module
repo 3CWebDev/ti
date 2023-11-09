@@ -1,10 +1,11 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 function custom_blocks_theme() {
 
-  $path = drupal_get_path('module', 'custom_blocks');
+  $path = \Drupal::service('extension.list.module')->getPath('custom_blocks');
   return array(
     'custom_blocks_ctas_first' => array(
       'template' => 'custom_blocks_ctas_first',
@@ -55,7 +56,7 @@ function custom_blocks_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
-function custom_blocks_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+function custom_blocks_form_alter(&$form, FormStateInterface $form_state, $form_id){
   if ($form_id == 'mailchimp_signup_subscribe_block_newsletter_signup_form'){
 
     $form['mergevars']['EMAIL']['#attributes']['placeholder'] = t('enter email');

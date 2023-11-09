@@ -2,9 +2,9 @@
 
 namespace Drupal\ccc_custom\EventSubscriber;
 
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\views\Views;
 use Drupal\views\ViewExecutable;
@@ -17,7 +17,7 @@ class ProfileSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public function checkForRedirection(GetResponseEvent $event) {
+  public function checkForRedirection(RequestEvent $event) {
 
 
     //entity.user.canonical

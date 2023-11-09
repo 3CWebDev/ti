@@ -31,7 +31,7 @@ class CustomGenericFileFormatter extends GenericFileFormatter   {
       $elements[$delta] = [
         '#theme' => 'file_link_custom',
         '#file' => $file,
-        '#url' => file_create_url($file->uri->getString()),
+        '#url' => \Drupal::service('file_url_generator')->generateAbsoluteString($file->uri->getString()),
         '#description' => $this->getSetting('use_description_as_link_text') ? $item->description : NULL,
         '#cache' => [
           'tags' => $file->getCacheTags(),
