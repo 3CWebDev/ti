@@ -3,3 +3,5 @@ ccc_custom.form:
   defaults:
     _title: 'Owner Login'
     _form: '\Drupal\ccc_custom\Form\OwnerLoginForm'
+  requirements:
+    _permission: 'access content'
