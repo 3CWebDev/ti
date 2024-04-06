@@ -229,3 +229,25 @@ div.site-alert,
 div.severity-low{
   margin-bottom:0 !important;
 }
+
+
+body.page-node-type-resales{
+  .field--name-field-pdf{
+    display: flex;
+    gap: 6rem;
+    margin-top: 3rem;
+    .field--item{
+      text-align: center;
+    }
+    .owner-description{
+      font-weight: bold;
+    }
+    img{
+      margin-bottom:10px;
+      transition: .5s all;
+    }
+    img:hover{
+      scale: 1.1;
+    }
+  }
+}

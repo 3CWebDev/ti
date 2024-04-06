@@ -12,6 +12,7 @@ use Drupal\user\UserInterface;
 use Drupal\user\UserStorageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+
 /**
  * Provides a user login form.
  *
@@ -91,7 +92,7 @@ class OwnerLoginForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('system.site');
 
-    $form['#markup'] = '<p class="owner-in">Owners, please enter your password in the box below then click "login" to access the owner\'s documents section.</p>';
+    $form['#markup'] = '<br><p class="owner-in"><i class="fa-solid fa-arrow-right-to-bracket"></i> Owners, please enter your password in the box below then click "login" to access the owner\'s documents section.</p>';
 
     // Display login form:
     $form['name'] = [
@@ -114,7 +115,7 @@ class OwnerLoginForm extends FormBase {
       '#type' => 'password',
       '#title' => $this->t('Password'),
       '#size' => 25,
-      '#description' => $this->t('Enter the password that accompanies your username.'),
+      '#description' => $this->t('Enter your ownership password'),
       '#required' => TRUE,
       '#attributes' => array('placeholder' => t('enter owner password')),
     ];
@@ -127,7 +128,6 @@ class OwnerLoginForm extends FormBase {
     $form['#validate'][] = '::validateFinal';
 
     $this->renderer->addCacheableDependency($form, $config);
-
     return $form;
   }
 
@@ -137,8 +137,7 @@ class OwnerLoginForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $account = $this->userStorage->load($form_state->get('uid'));
     user_login_finalize($account);
-
-
+    
   }
 
   /**
@@ -187,7 +186,10 @@ class OwnerLoginForm extends FormBase {
 
         // Don't allow login if the limit for this user has been reached.
         // Default is to allow 5 failed attempts every 6 hours.
-        
+        if (!$this->flood->isAllowed('user.failed_login_user', $flood_config->get('user_limit'), $flood_config->get('user_window'), $identifier)) {
+          $form_state->set('flood_control_triggered', 'user');
+          return;
+        }
       }
       // We are not limited by flood control, so try to authenticate.
       // Store $uid in form state as a flag for self::validateFinal().

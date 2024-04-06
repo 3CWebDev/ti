@@ -27,6 +27,7 @@ class ProfileSubscriber implements EventSubscriberInterface {
     $userID = $user->id();
     $roles = $user->getRoles();
 
+    // Redirect owners from /user page to /owners documents page
     if (($route_name == 'user.page' || $route_name == 'entity.user.canonical') && ($userID !== '1' && !in_array('administrator', $roles))){
 
       $response =  new RedirectResponse('/owners');

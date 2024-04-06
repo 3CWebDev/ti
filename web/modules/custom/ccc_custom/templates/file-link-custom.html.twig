@@ -14,5 +14,12 @@
  */
 #}
 
-<span{{ attributes }}><a target="_blank" href="{{ url }}"><img src="/sites/default/files/images/download-pdf-button.png" alt="download pdf"></a></span>
+<div class="owner-pdf">
+    <div><span{{ attributes }}><a target="_blank" href="{{ url }}"><img src="/sites/default/files/images/download-pdf-button.png" alt="download pdf"></a></span></div>
+    {% if description %}
+        <div class="owner-description"><a target="_blank" href="{{ url }}">{{ description }}</a></div>
+    {% else %}
+        <a target="_blank" href="{{ url }}"> {{ file.filename.value }}</a>
+    {% endif %}
 
+</div>
