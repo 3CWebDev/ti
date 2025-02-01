@@ -124,6 +124,11 @@
         }
     },
     "extra": {
+		"patches": {
+		  "drupal/responsive_menu": {
+			"JS Error": "https://www.drupal.org/files/issues/2023-11-29/3404945-2.patch"
+		  }
+		},
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
@@ -134,10 +139,7 @@
 					}
         },
 				
-				"patches": {            										
-						
-						
-				},
+				
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
