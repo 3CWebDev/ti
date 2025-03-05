@@ -23,7 +23,7 @@
         "drupal/antibot": "^2",
         "drupal/back_to_top": "^3",
         "drupal/backup_migrate": "^5.0",
-        "drupal/better_exposed_filters": "^6.0",
+        "drupal/better_exposed_filters": "^7.0",
         "drupal/blazy": "^3",
         "drupal/bootstrap": "^3.21",
         "drupal/captcha": "^2.0",
@@ -104,7 +104,7 @@
         "drupal/webform": "^6.0",
         "drupal/xmlsitemap": "^1.0@RC",
         "drupal/yoast_seo": "^2",
-        "drush/drush": "^12",
+        "drush/drush": "^13.3",
         "geocoder-php/google-maps-provider": "^4.4",
         "php-http/guzzle7-adapter": "^1.0"
     },
@@ -125,9 +125,7 @@
     },
     "extra": {
 		"patches": {
-		  "drupal/responsive_menu": {
-			"JS Error": "https://www.drupal.org/files/issues/2023-11-29/3404945-2.patch"
-		  }
+		  
 		},
         "drupal-scaffold": {
             "locations": {
